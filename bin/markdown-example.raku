@@ -10,7 +10,7 @@ my &index = &page.assuming(
     );
 
 my $base-examples =
-    site
+    site :!scss,
         index
         main
             div [
@@ -35,4 +35,4 @@ my $base-examples =
                     hr;
             ];
 
-$base-examples.serve: :!scss;
+$base-examples.serve;
