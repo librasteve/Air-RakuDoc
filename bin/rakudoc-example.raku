@@ -11,7 +11,7 @@ my &index = &page.assuming(
     );
 
 my $base-examples =
-    site :register[RakuDoc.new], :scss-off, #:theme-color<blue>,
+    site :register[RakuDoc.new], :!scss, #:theme-color<blue>,
         index #:REFRESH(5),
         main
             div [
