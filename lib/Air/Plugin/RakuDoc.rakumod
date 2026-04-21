@@ -13,7 +13,7 @@ sub internal-rakudoc( $source ) is export {
     $rend-obj.render( $source.AST )
 }
 
-role RakuDoc    does Component {
+role Air::Plugin::RakuDoc does Component {
     #| rakudoc source to be converted
     has Str $.rakudoc;
     # cache the result
@@ -30,10 +30,6 @@ role RakuDoc    does Component {
     }
 }
 
-sub rakudoc(Str $rakudoc, *%h) is export {
-    internal-rakudoc( $rakudoc )
-}
-
 sub templates {
     %(
     #| These sub-templates should allow sub-classes of RakuDoc::To::HTML
@@ -48,3 +44,5 @@ sub templates {
         footer => -> %, $ { '' }, # remove footer
     )
 }
+
+sub rakudoc(*@a, *%h) is export { Air::Plugin::RakuDoc.new( |@a, |%h ) };
