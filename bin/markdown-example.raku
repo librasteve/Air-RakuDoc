@@ -10,8 +10,8 @@ my &index = &page.assuming(
     );
 
 my $base-examples =
-    site :scss-off,
-        index #:REFRESH(5),
+    site
+        index
         main
             div [
                 h3 'Markdown';
@@ -35,4 +35,4 @@ my $base-examples =
                     hr;
             ];
 
-$base-examples.serve;
+$base-examples.serve: :!scss;
