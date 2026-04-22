@@ -1,6 +1,5 @@
 use RakuDoc::Render;
 use RakuDoc::To::HTML;
-use Air;
 use Air::Component;
 
 sub internal-rakudoc( $source ) is export {
