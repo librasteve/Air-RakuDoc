@@ -4,7 +4,7 @@
 <div id="SYNOPSIS"></div>
 
 ## SYNOPSIS
-<span class="para" id="ee53798"></span>In an Air website definition, include `use Air::RakuDoc`.
+<span class="para" id="ee53798"></span>In an Air website definition, include `use Air::Plugin::RakuDoc`.
 
 <div id="Example"></div>
 
