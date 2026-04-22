@@ -8,7 +8,7 @@
     ],
     "auth": "zef:finanalyst",
     "depends": [
-        "Air:ver<0.1.16+>:auth<zef:librasteve>",
+        "Air:ver<0.1.17+>:auth<zef:librasteve>",
         "Rakuast::RakuDoc::Render:ver<1.0.0+>:auth<zef:finanalyst>"
     ],
     "build-depends": [],
