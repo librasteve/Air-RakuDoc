@@ -1,7 +1,9 @@
-# Gitignore for Raku (https://raku.org)
-# As part of https://github.com/github/gitignore
-
-# precompiled files
+.DS_Store
 .precomp
-lib/.precomp
-
+.lib/precomp
+*.swp
+.ipynb_checkpoints/*
+.log
+.pem
+.idea/
+*.iml

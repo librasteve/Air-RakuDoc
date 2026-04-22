@@ -2,7 +2,7 @@
 
 use Air::Functional :BASE;
 use Air::Base;
-use Air::RakuDoc;
+use Air::Plugin::RakuDoc;
 
 my &index = &page.assuming(
     title       => 'hÅrc',
@@ -11,30 +11,10 @@ my &index = &page.assuming(
     );
 
 my $base-examples =
-    site :register[RakuDoc.new], :!scss, #:theme-color<blue>,
-        index #:REFRESH(5),
+    site :register[Air::Plugin::RakuDoc.new], :!scss,
+        index
         main
             div [
-                h3 'Markdown';
-                markdown q:to/END/;
-                        # My Markdown Example
-
-                        ## Subheading
-
-                        **Bold text** and *italic text*.
-
-                        Here's a [link](https://www.example.com).
-
-                         - Item 1
-                         - Item 2
-                         - Item 3
-
-                        > This is a blockquote.
-
-                        `Inline code` is useful!
-                        END
-                    hr;
-
                 h3 'RakuDoc';
                 rakudoc q:to/RAKUDOC/;
                     =begin rakudoc :!toc
