@@ -13,7 +13,7 @@
     ],
     "build-depends": [],
     "provides": {
-        "Air::RakuDoc": "lib/Air/Plugin/RakuDoc.rakumod"
+        "Air::Plugin::RakuDoc": "lib/Air/Plugin/RakuDoc.rakumod"
     },
     "license": "Artistic-2.0",
     "source-url": "https://github.com/finanalyst/Air-RakuDoc.git"
