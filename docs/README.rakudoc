@@ -5,18 +5,19 @@ Richard Hainsworth, aka finanalyst
 =for VERSION :hidden
 v0.1.0
 =SYNOPSIS In an Air website definition, include C<use Air::RakuDoc>.
+It will render all of the blocks and markup codes defined for RakuDoc v2, with L<some caveats|#Limitations>.
+
 =head Example
 
-The following is based on C<07-baseexamples.raku> in the Air-Examples distribution.
-
-The program is in C<bin/rakudoc-example.raku>
+The following is in C<bin/rakudoc-example.raku>
 
 =begin code
+#!/usr/bin/env raku
 #!/usr/bin/env raku
 
 use Air::Functional :BASE;
 use Air::Base;
-use Air::RakuDoc;
+use Air::Plugin::RakuDoc;
 
 my &index = &page.assuming(
     title       => 'hÅrc',
@@ -25,30 +26,10 @@ my &index = &page.assuming(
     );
 
 my $base-examples =
-    site :register[RakuDoc.new], #:theme-color<blue>,
-        index #:REFRESH(5),
+    site :register[Air::Plugin::RakuDoc.new], :!scss,
+        index
         main
             div [
-                h3 'Markdown';
-                markdown q:to/END/;
-                        # My Markdown Example
-
-                        ## Subheading
-
-                        **Bold text** and *italic text*.
-
-                        Here's a [link](https://www.example.com).
-
-                         - Item 1
-                         - Item 2
-                         - Item 3
-
-                        > This is a blockquote.
-
-                        `Inline code` is useful!
-                        END
-                    hr;
-
                 h3 'RakuDoc';
                 rakudoc q:to/RAKUDOC/;
                     =begin rakudoc :!toc
@@ -70,6 +51,17 @@ my $base-examples =
             ];
 
 $base-examples.serve;
-
 =end code
+
+=head Limitations
+
+Citation blocks and C<Q< >> markup will not render properly without the external programs:
+=item pandoc
+=item citeproc
+
+And for more estoteric citation formats only, some of the utilities in the BibUtils repository.
+
+Currently, not all the Plugins available in the Rakuast::RakuDoc::Render distribution can be used,
+eg, GraphViz and Fontawesome.
+
 =end rakudoc
