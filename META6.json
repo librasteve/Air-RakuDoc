@@ -1,5 +1,5 @@
 {
-    "name": "Air-RakuDoc",
+    "name": "Air-Plugin-RakuDoc",
     "description": "Plugin to add RakuDoc source blocks.",
     "version": "0.1.0",
     "authors": [

@@ -30,24 +30,28 @@ role Air::Plugin::RakuDoc does Component {
     }
 }
 
+## Let's discuss
+# noting Use of uninitialized value %!data{'css'} of type Any in string context.
 sub templates {
     %(
     #| These sub-templates should allow sub-classes of RakuDoc::To::HTML
     #| to provide replacement templates on a more granular basis
         final => -> %prm, $tmpl {
             qq:to/PAGE/
-                    <style>{ $tmpl.globals.data<css> }</style>
-                    { $tmpl<main-content> }
-                    { $tmpl<footer> }
-                    PAGE
-                },
+                <style>{ $tmpl.globals.data<css> }</style>
+                { $tmpl<main-content> }
+                { $tmpl<footer> }
+                PAGE
+            },
         footer => -> %, $ { '' }, # remove footer
     )
 }
 
 sub rakudoc(*@a, *%h) is export { Air::Plugin::RakuDoc.new( |@a, |%h ) };
 
+## Note the sprinkle of color: var(pico-color) and background-color: var(--pico-code-background-color);...
 sub vanilla-css {
+
     q:to/CSS/;
     @charset "UTF-8";
     /*! Vanilla CSS */
@@ -69,7 +73,8 @@ sub vanilla-css {
 
     span.code {
       font-weight: 500;
-      background-color: linen;
+      //background-color: linen;
+      background-color: var(--pico-code-background-color);
       display: inline-block;
       margin: 2px;
       padding: 2px;
@@ -139,12 +144,14 @@ sub vanilla-css {
     }
 
     .raku-code pre.rakudoc:first-child {
-      background-color: #eee;
+      background-color: var(--pico-code-background-color);
+      //background-color: #eee;
       margin: 0 1rem;
       padding: 0.5rem 1rem 0.5rem 1rem;
     }
     .raku-code .code-caption {
-      color: maroon;
+      color: var(--pico-color);
+      //color: maroon;
       font-size: 0.875rem;
       font-weight: 500;
       font-style: italic;
@@ -152,12 +159,14 @@ sub vanilla-css {
     }
 
     .raku-input pre.rakudoc:first-child {
-      background-color: #eee;
+      background-color: var(--pico-code-background-color);
+      //background-color: #eee;
       margin: 0 1rem;
       padding: 0.5rem 1rem 0.5rem 1rem;
     }
     .raku-input .input-caption {
-      color: maroon;
+      color: var(--pico-color);
+      //color: maroon;
       font-size: 0.875rem;
       font-weight: 500;
       font-style: italic;
@@ -165,12 +174,14 @@ sub vanilla-css {
     }
 
     .raku-output pre.rakudoc:first-child {
-      background-color: #eee;
+      background-color: var(--pico-code-background-color);
+      //background-color: #eee;
       margin: 0 1rem;
       padding: 0.5rem 1rem 0.5rem 1rem;
     }
     .raku-output .output-caption {
-      color: maroon;
+      color: var(--pico-color);
+      //color: maroon;
       font-size: 0.875rem;
       font-weight: 500;
       font-style: italic;
@@ -291,7 +302,8 @@ sub vanilla-css {
     }
 
     .heading > a {
-      color: maroon;
+      color: var(--pico-color);
+      //color: maroon;
       text-decoration: none;
     }
 
@@ -311,7 +323,8 @@ sub vanilla-css {
       border-collapse: collapse;
     }
     .rakudoc-table .table-caption.rakudoc {
-      color: maroon;
+      color: var(--pico-color);
+      //color: maroon;
       font-size: 0.875rem;
       font-weight: 500;
       font-style: italic;
@@ -412,7 +425,8 @@ sub vanilla-css {
       margin: 1rem;
     }
     .formula .formula-caption {
-      color: maroon;
+      color: var(--pico-color);
+      //color: maroon;
       padding: 0.2rem 0 1rem 0;
       font-size: 0.875rem;
       font-weight: 500;
@@ -440,4 +454,6 @@ sub vanilla-css {
     }
 
     CSS
+
+
 }
