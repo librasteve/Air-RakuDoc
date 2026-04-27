@@ -31,7 +31,7 @@ my $base-examples =
                     And now some ordinary text.
                     =end rakudoc
                     RAKUDOC
-                    hr;
+                hr;
 
             ];
 
